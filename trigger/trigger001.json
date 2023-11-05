@@ -1,0 +1,24 @@
+{
+	"name": "trigger001",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "SQL_Gen2",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Minute",
+				"interval": 2,
+				"startTime": "2023-10-30T11:28:00",
+				"timeZone": "India Standard Time"
+			}
+		}
+	}
+}

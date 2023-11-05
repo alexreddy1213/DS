@@ -1,0 +1,94 @@
+{
+	"name": "AzureSqlTable6",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_CovidSQL",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "subject",
+				"type": "nvarchar"
+			},
+			{
+				"name": "modeldate",
+				"type": "nvarchar"
+			},
+			{
+				"name": "party",
+				"type": "nvarchar"
+			},
+			{
+				"name": "startdate",
+				"type": "nvarchar"
+			},
+			{
+				"name": "enddate",
+				"type": "nvarchar"
+			},
+			{
+				"name": "pollster",
+				"type": "nvarchar"
+			},
+			{
+				"name": "grade",
+				"type": "nvarchar"
+			},
+			{
+				"name": "samplesize",
+				"type": "nvarchar"
+			},
+			{
+				"name": "population",
+				"type": "nvarchar"
+			},
+			{
+				"name": "weight",
+				"type": "nvarchar"
+			},
+			{
+				"name": "influence",
+				"type": "nvarchar"
+			},
+			{
+				"name": "multiversions",
+				"type": "nvarchar"
+			},
+			{
+				"name": "tracking",
+				"type": "nvarchar"
+			},
+			{
+				"name": "approve",
+				"type": "nvarchar"
+			},
+			{
+				"name": "disapprove",
+				"type": "nvarchar"
+			},
+			{
+				"name": "approve_adjusted",
+				"type": "nvarchar"
+			},
+			{
+				"name": "disapprove_adjusted",
+				"type": "nvarchar"
+			},
+			{
+				"name": "timestamp",
+				"type": "nvarchar"
+			},
+			{
+				"name": "url",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "covid_approval_polls_adjusted"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,77 @@
+{
+	"name": "DS_blobcovidgetmeta",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "covid-19-polls-master/covid-19-polls-master",
+				"container": "covid"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "start_date",
+				"type": "String"
+			},
+			{
+				"name": "end_date",
+				"type": "String"
+			},
+			{
+				"name": "pollster",
+				"type": "String"
+			},
+			{
+				"name": "sponsor",
+				"type": "String"
+			},
+			{
+				"name": "sample_size",
+				"type": "String"
+			},
+			{
+				"name": "population",
+				"type": "String"
+			},
+			{
+				"name": "party",
+				"type": "String"
+			},
+			{
+				"name": "subject",
+				"type": "String"
+			},
+			{
+				"name": "tracking",
+				"type": "String"
+			},
+			{
+				"name": "text",
+				"type": "String"
+			},
+			{
+				"name": "approve",
+				"type": "String"
+			},
+			{
+				"name": "disapprove",
+				"type": "String"
+			},
+			{
+				"name": "url",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,124 @@
+{
+	"name": "DF_lookup",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "AzureSqlTable5",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				},
+				{
+					"dataset": {
+						"referenceName": "AzureSqlTable6",
+						"type": "DatasetReference"
+					},
+					"name": "source2"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "DelimitedText3",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				},
+				{
+					"dataset": {
+						"referenceName": "DelimitedText4",
+						"type": "DatasetReference"
+					},
+					"name": "sink2"
+				}
+			],
+			"transformations": [
+				{
+					"name": "lookup1"
+				},
+				{
+					"name": "split1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          start_date as string,",
+				"          end_date as string,",
+				"          pollster as string,",
+				"          sponsor as string,",
+				"          sample_size as string,",
+				"          population as string,",
+				"          party as string,",
+				"          subject as string,",
+				"          tracking as string,",
+				"          text as string,",
+				"          approve as string,",
+				"          disapprove as string,",
+				"          url as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> source1",
+				"source(output(",
+				"          subject as string,",
+				"          modeldate as string,",
+				"          party as string,",
+				"          startdate as string,",
+				"          enddate as string,",
+				"          pollster as string,",
+				"          grade as string,",
+				"          samplesize as string,",
+				"          population as string,",
+				"          weight as string,",
+				"          influence as string,",
+				"          multiversions as string,",
+				"          tracking as string,",
+				"          approve as string,",
+				"          disapprove as string,",
+				"          approve_adjusted as string,",
+				"          disapprove_adjusted as string,",
+				"          timestamp as string,",
+				"          url as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> source2",
+				"source1, source2 lookup(source1@population == source2@population,",
+				"     multiple: false,",
+				"     pickup: 'any',",
+				"     broadcast: 'auto')~> lookup1",
+				"lookup1 split(isMatch(),",
+				"     disjoint: true) ~> split1@(Mathcing, Nonmatching)",
+				"split1@Mathcing sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          Url as string,",
+				"          SharingCapability as string",
+				"     ),",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> sink1",
+				"split1@Nonmatching sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          Url as string,",
+				"          SharingCapability as string",
+				"     ),",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> sink2"
+			]
+		}
+	}
+}

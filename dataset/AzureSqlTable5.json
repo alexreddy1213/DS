@@ -1,0 +1,70 @@
+{
+	"name": "AzureSqlTable5",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_CovidSQL",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "start_date",
+				"type": "nvarchar"
+			},
+			{
+				"name": "end_date",
+				"type": "nvarchar"
+			},
+			{
+				"name": "pollster",
+				"type": "nvarchar"
+			},
+			{
+				"name": "sponsor",
+				"type": "nvarchar"
+			},
+			{
+				"name": "sample_size",
+				"type": "nvarchar"
+			},
+			{
+				"name": "population",
+				"type": "nvarchar"
+			},
+			{
+				"name": "party",
+				"type": "nvarchar"
+			},
+			{
+				"name": "subject",
+				"type": "nvarchar"
+			},
+			{
+				"name": "tracking",
+				"type": "nvarchar"
+			},
+			{
+				"name": "text",
+				"type": "nvarchar"
+			},
+			{
+				"name": "approve",
+				"type": "nvarchar"
+			},
+			{
+				"name": "disapprove",
+				"type": "nvarchar"
+			},
+			{
+				"name": "url",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "covid_approval_polls"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
